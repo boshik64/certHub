@@ -22,7 +22,7 @@ class MerchantStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cinema_id' => 'required',
+            'cinema_id' => 'required|exists:cinemas,id',
             'MID' => 'integer|required',
             'merchant_type' => 'string|required',
             'workstation' => 'string|required',

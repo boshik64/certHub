@@ -23,7 +23,7 @@ class CinemaUpdateRequest extends FormRequest
     {
         return [
             'cinema_name' => 'string|required',
-            'company_title_id' => 'required',
+            'company_title_id' => 'required|exists:company_titles,id',
         ];
     }
 }

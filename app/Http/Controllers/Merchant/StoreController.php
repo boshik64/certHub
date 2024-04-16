@@ -12,6 +12,7 @@ class StoreController extends Controller
 {
     public function __invoke(MerchantStoreRequest $request)
     {
+//        dd($request->validated());
         Merchant::create($request->validated());
         return redirect('/merchants');
     }
