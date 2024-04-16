@@ -11,6 +11,7 @@ class DestroyController extends Controller
 {
     public function __invoke(Cinema $cinema)
     {
+//        dd($cinema);
         $cinema->delete();
         return redirect('/cinemas');
     }

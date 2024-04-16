@@ -3,19 +3,14 @@
 namespace App\Http\Controllers\Cinema;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Cinema\CinemaStoreRequest;
 use App\Models\Cinema;
-use App\Models\CompanyTitle;
-use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function __invoke(CinemaStoreRequest $request)
     {
-        $data = request()->validate([
-            'cinema_name' => 'string|required',
-            'company_title_id' => '',
-        ]);
-        Cinema::create($data);
+        Cinema::create($request->validated());
         return redirect('/cinemas');
     }
 }

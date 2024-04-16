@@ -3,22 +3,16 @@
 namespace App\Http\Controllers\Merchant;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Merchant\MerchantUpdateRequest;
 use App\Models\Cinema;
 use App\Models\Merchant;
 use Illuminate\Http\Request;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Merchant $merchant)
+    public function __invoke(Merchant $merchant, MerchantUpdateRequest $request)
     {
-        $data = request()->validate([
-            'cinema_id' => '',
-            'MID' => 'integer|required',
-            'merchant_type' => 'string|required',
-            'workstation' => 'string|required',
-            'department_name' => 'string|required'
-        ]);
-        $merchant->update($data);
+        $merchant->update($request->validated());
         return redirect('/merchants/' . $merchant->id);
 
     }
